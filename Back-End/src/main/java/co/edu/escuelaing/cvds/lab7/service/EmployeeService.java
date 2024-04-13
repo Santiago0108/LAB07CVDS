@@ -15,4 +15,7 @@ public interface EmployeeService {
     EmployeeDTO updateEmployee(String employeeId, EmployeeDTO updatedEmployee);
 
     void deleteEmployee(String employeeId);
+
+    EmployeeDTO updateEmployeeField(String employeeId, EmployeeDTO updatedEmployee);
+
 }

@@ -56,4 +56,24 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = employeeRepository.findById(employeeId).orElseThrow(()->new ResourceNotFoundException("Employee is not exixsts with given id: " + employeeId));
         employeeRepository.delete(employee);
     }
+
+    @Override
+    public EmployeeDTO updateEmployeeField(String employeeId, EmployeeDTO updatedEmployee) {
+        Employee employee = employeeRepository.findById(employeeId).orElseThrow(()->new ResourceNotFoundException("Employee is not exixsts with given id: " + employeeId));
+        if(updatedEmployee.getFirstname() != null){
+            employee.setFirstname(updatedEmployee.getFirstname());
+        }
+        if(updatedEmployee.getLastname() != null){
+            employee.setLastname(updatedEmployee.getLastname());
+        }
+        if(updatedEmployee.getRole() != null){
+            employee.setRole(updatedEmployee.getRole());
+        }
+        if(updatedEmployee.getSalary() != null){
+            employee.setSalary(updatedEmployee.getSalary());
+        }
+
+        Employee updatedEmployeeObj = employeeRepository.save(employee);
+        return EmployeeMapper.mapToEmployeeDTO(updatedEmployeeObj);
+    }
 }

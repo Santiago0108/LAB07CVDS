@@ -50,4 +50,10 @@ public class EmployeeController {
         employeeService.deleteEmployee(employeeId);
         return ResponseEntity.ok("Employee deleted successfully");
     }
+
+    @PatchMapping("{id}")
+    public ResponseEntity<EmployeeDTO> updateEmployeeField(@PathVariable("id") String employeeId, @RequestBody EmployeeDTO updatedEmployee){
+        EmployeeDTO employeeDTO = employeeService.updateEmployeeField(employeeId, updatedEmployee);
+        return ResponseEntity.ok(employeeDTO);
+    }
 }
