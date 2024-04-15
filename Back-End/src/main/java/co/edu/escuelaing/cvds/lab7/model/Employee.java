@@ -20,6 +20,7 @@ public class Employee {
     @Getter
     @Setter
     @Column(name = "LAST_NAME")
+    @Pattern(regexp = "empleado|jefe|dueño") 
     private String lastname;
     @Getter
     @Setter
@@ -28,6 +29,8 @@ public class Employee {
     @Column(name = "SALARY")
     @Getter
     @Setter
+    @Min(value=1)
+    @Max(Value=5)
     private Double salary;
 
     public Employee() {
